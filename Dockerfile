@@ -1,19 +1,15 @@
-# Use Playwright's official image with all browsers pre-installed
 FROM mcr.microsoft.com/playwright:v1.40.0-jammy
 
 WORKDIR /app
 
-# Copy package files
+# Copy package files first
 COPY package*.json ./
 
-# Install dependencies
 RUN npm ci --only=production
 
-# Copy server code
-COPY server.js ./
+# Copy the rest of the app
+COPY . .
 
-# Expose port
 EXPOSE 3000
 
-# Start the server
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
