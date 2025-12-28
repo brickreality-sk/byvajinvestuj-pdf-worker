@@ -1,0 +1,18 @@
+{
+  "name": "pdf-worker",
+  "version": "1.0.0",
+  "description": "Playwright PDF generation worker for Railway",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "playwright": "^1.40.0",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
