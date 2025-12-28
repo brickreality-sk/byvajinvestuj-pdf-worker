@@ -1,17 +1,19 @@
-# force redeploy
-
+# Playwright image – MUSÍ sedieť s verziou v package.json
 FROM mcr.microsoft.com/playwright:v1.57.0-jammy
 
 WORKDIR /app
 
-# Copy package files first
-COPY package*.json ./
+# Najprv package súbory (kvôli cache)
+COPY package.json package-lock.json ./
 
-RUN npm ci --only=production
+# Nainštaluj presne locknuté dependencies
+RUN npm ci --omit=dev
 
-# Copy the rest of the app
+# Skopíruj zvyšok aplikácie
 COPY . .
 
+# Railway ti pustí app na tomto porte
 EXPOSE 8080
 
+# Spustenie servera
 CMD ["node", "server.js"]
