@@ -61,7 +61,7 @@ app.get('/api/pdf', async (req, res) => {
 
     await page.goto(printUrl, {
       waitUntil: 'networkidle',
-      timeout: 30000
+      timeout: 90000
     });
 
     // Wait for fonts to load
