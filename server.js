@@ -82,7 +82,7 @@ app.get('/api/pdf', async (req, res) => {
 
     // Send PDF as download
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename="report-${template}-${reportId}.pdf"`);
+    res.setHeader('Content-Disposition', `inline; filename="report-${template}-${reportId}.pdf"`);
     res.setHeader('Content-Length', pdfBuffer.length);
     res.send(pdfBuffer);
 
